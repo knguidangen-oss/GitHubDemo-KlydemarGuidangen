@@ -7,4 +7,25 @@ def menu ():
     print("5. Exit the program")
     print("="*10)
 
-menu ()
+
+def main():
+    while True:
+        menu()
+        choice = input("Choose an option (1-5): ")
+
+        if choice == "1":
+            print("Show a table of activities")
+        elif choice == "2":
+            print("Show finished activities")
+        elif choice == "3":
+            print("Add new activity")
+        elif choice == "4":
+            print("Remove activity")
+        elif choice == "5":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+main()

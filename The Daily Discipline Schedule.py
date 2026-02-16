@@ -1,29 +1,44 @@
-def menu ():
-    print("\n == Main Menu ==")
-    print("1. The table of activities")
-    print("2. Finished activities")
-    print("3. Add a new activity to the list")
-    print("4. Remove an activity from the list")
-    print("5. Exit the program")
-    print("="*10)
-
-
 def main():
+    # create an empty lsit for the activities
+    activities = []
+
+    # create another empty list for the finished activities
+    activitiesFinished = []
+
     while True:
         menu()
-        choice = input("Choose an option (1-5): ")
+        choice = input("Choose from the options given above (1-5): ")
 
         if choice == "1":
-            print("Show a table of activities")
+            print("The table of activities:")
+            print(activities)
+
         elif choice == "2":
-            print("Show finished activities")
+            print("Finished activities:")
+            print(activitiesFinished)
+
         elif choice == "3":
-            print("Add new activity")
+            new_activity = input("Add a new activity")
+            activities.append(new_activity)
+            print("new activity added")
+
         elif choice == "4":
-            print("Remove activity")
+            print("activities:")
+            print()
+            print(activities)
+            remove = input("Choose an activity to remove")
+
+            if remove in activities:
+                activities.remove(remove)
+                print("Activity removed successfully")
+
+            else:
+                print("Chosen activity could not be found")
+
         elif choice == "5":
             print("Goodbye!")
             break
+
         else:
             print("Invalid choice. Please try again.")
 

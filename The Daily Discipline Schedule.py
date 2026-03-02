@@ -1,13 +1,28 @@
+import json
+# create an empty list for the activities
+activities = []
+
+# create another empty list for fiNISHED ACTIVITIES
+activitiesFinished = []
+
+print("[Good day, user! This program allows you to store all the acivities that you have in a list.\nWhen you have your list, you can choose to view the list of all your pending and finished activities,\nadd and remove activities, or exit the program.]")
+
+try:
+    filename = "Activities.json"
+    with open(filename, 'r') as file:
+        # Load the JSON data from the file
+        data = json.load(file)
+
+except FileNotFoundError:
+    print("Error: The file 'data.json' was not found.")
+except json.JSONDecodeError as e:
+    print(f"Failed to decode JSON: {e}")
+
 def menu():
     print("\n===== MAIN MENU =====")
 
 
 def main():
-    # create an empty list for the activities
-    activities = []
-
-    # create another empty list for the finished activities
-    activitiesFinished = []
 
     # Main Menu
     while True:
@@ -48,7 +63,6 @@ def main():
         # Remove an activity from the list
         elif choice == "4":
             print("Activities:")
-            print()
 
             if not activities:
                 print("No activities to remove.")
@@ -71,6 +85,8 @@ def main():
 
         else:
             print("Invalid choice. Please try again.")
+
+
 
 
 main()

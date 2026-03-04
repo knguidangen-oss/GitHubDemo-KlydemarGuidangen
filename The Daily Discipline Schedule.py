@@ -55,7 +55,7 @@ try:
         # Add a new activity to the list
         elif choice == "3":
             new_activity = input("Add a new activity: ")
-            activities["activities"].append(new_activity)
+            activities.append(new_activity)
 
             with open("activities.json", 'w') as file:
                 json.dump(data, file, indent=4)

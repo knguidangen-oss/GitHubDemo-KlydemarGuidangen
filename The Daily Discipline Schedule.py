@@ -29,7 +29,8 @@ try:
         print("2 - Finished Activities")
         print("3 - Add a New Activity")
         print("4 - Remove an Activity")
-        print("5 - Exit")
+        print("5 - Mark Activity as Finished")
+        print("6 - Exit")
 
         choice = input("Choose from the options given above (1-5): ")
         print()
@@ -80,8 +81,28 @@ try:
             else:
                 print("Activity could not be found.")
 
-        # End the program
         elif choice == "5":
+            if not activities:
+                print("No unfinished activities to remove.")
+            else:
+                print("Unifinished activities:")
+                for activity in activities:
+                    print(activity)
+                finishedActivity = input("Choose an activity to mark as finished: ")
+                if finishedActivity in activities:
+                    activities.remove(finishedActivity)
+                    activitiesFinished.append(finishedActivity)
+
+                    data['activities'] = activities
+                    data['finishedActivities'] = activitiesFinished
+                    with open("activities.json", 'w') as file:
+                        json.dump(data, file, indent=4)
+                    print(f"'{finishedActivity}' has been marked as finished!")
+
+                else:
+                    print("Invalid choice. The activity must be in the unfinished list.")
+        # End the program
+        elif choice == "6":
             print("Goodbye!")
             break
 

@@ -1,31 +1,29 @@
 import json
-# create an empty list for the activities
-activities = []
-
-# create another empty list for fiNISHED ACTIVITIES
-activitiesFinished = []
-
-print("[Good day, user! This program allows you to store all the acivities that you have in a list.\nWhen you have your list, you can choose to view the list of all your pending and finished activities,\nadd and remove activities, or exit the program.]")
-
-try:
-    filename = "Activities.json"
-    with open(filename, 'r') as file:
-        # Load the JSON data from the file
-        data = json.load(file)
-
-except FileNotFoundError:
-    print("Error: The file 'data.json' was not found.")
-except json.JSONDecodeError as e:
-    print(f"Failed to decode JSON: {e}")
 
 def menu():
     print("\n===== MAIN MENU =====")
 
+activities = []
+activitiesFinished = []
 
-def main():
+print("Good day, user! This program allows you to store all the acivities that you have in a list.\nWhen you have your list, you can choose to view the list of all your pending and finished activities,\nadd and remove activities, or exit the program.")
 
-    # Main Menu
+try:
+    with open("activities.json", "r") as f:
+        data = json.load(f)
+
+    activities = data['activities']
+    activitiesFinished = data["finishedActivities"]
+
     while True:
+
+        for activity in data:
+            if activity == data["activities"]:
+                activityToDO = activity
+            elif activity == data["finishedActivities"]:
+                activityDone = activity
+
+        #MAIN MENU
         menu()
         print("1 - List of Activities")
         print("2 - Finished Activities")
@@ -57,7 +55,11 @@ def main():
         # Add a new activity to the list
         elif choice == "3":
             new_activity = input("Add a new activity: ")
-            activities.append(new_activity)
+            activities["activities"].append(new_activity)
+
+            with open("activities.json", 'w') as file:
+                json.dump(data, file, indent=4)
+
             print("New activity added.")
 
         # Remove an activity from the list
@@ -70,13 +72,13 @@ def main():
                 for activity in activities:
                     print(activity)
 
-                remove = input("Choose an activity to remove: ")
+            remove = input("Choose an activity to remove: ")
 
-                if remove in activities:
-                    activities.remove(remove)
-                    print("Activity removed successfully.")
-                else:
-                    print("Activity could not be found.")
+            if remove in activities:
+                activities.remove(remove)
+                print("Activity removed successfully.")
+            else:
+                print("Activity could not be found.")
 
         # End the program
         elif choice == "5":
@@ -86,7 +88,7 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-
-
-
-main()
+except FileNotFoundError:
+    print("Error: The file 'data.json' was not found.")
+except json.JSONDecodeError as e:
+    print(f"Failed to decode JSON: {e}")

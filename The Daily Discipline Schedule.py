@@ -12,19 +12,20 @@ try:
     with open("activities.json", "r") as f:
         data = json.load(f)
 
-    activities = data['activities']
+    activities = data['Activities']
     activitiesFinished = data["finishedActivities"]
 
     while True:
 
         for activity in data:
-            if activity == data["activities"]:
+            if activity == data["Activities"]:
                 activityToDO = activity
             elif activity == data["finishedActivities"]:
                 activityDone = activity
 
         #MAIN MENU
         menu()
+        print()
         print("1 - List of Activities")
         print("2 - Finished Activities")
         print("3 - Add a New Activity")
@@ -58,8 +59,8 @@ try:
             new_activity = input("Add a new activity: ")
             activities.append(new_activity)
 
-            with open("activities.json", 'w') as file:
-                json.dump(data, file, indent=4)
+            with open("Activities.json", 'w') as file:
+                json.dump(data, data.file, indent=4)
 
             print("New activity added.")
 
@@ -85,7 +86,7 @@ try:
             if not activities:
                 print("No unfinished activities to remove.")
             else:
-                print("Unifinished activities:")
+                print("Unfinished activities:")
                 for activity in activities:
                     print(activity)
                 finishedActivity = input("Choose an activity to mark as finished: ")
@@ -93,10 +94,10 @@ try:
                     activities.remove(finishedActivity)
                     activitiesFinished.append(finishedActivity)
 
-                    data['activities'] = activities
+                    data['Activities'] = activities
                     data['finishedActivities'] = activitiesFinished
                     with open("activities.json", 'w') as file:
-                        json.dump(data, file, indent=4)
+                        json.dump(data, data.file, indent=4)
                     print(f"'{finishedActivity}' has been marked as finished!")
 
                 else:

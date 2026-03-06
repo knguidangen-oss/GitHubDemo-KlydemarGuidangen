@@ -60,7 +60,7 @@ try:
             activities.append(new_activity)
 
             with open("Activities.json", 'w') as file:
-                json.dump(data, data.file, indent=4)
+                json.dump(data, file, indent=4)
 
             print("New activity added.")
 
@@ -97,7 +97,7 @@ try:
                     data['Activities'] = activities
                     data['finishedActivities'] = activitiesFinished
                     with open("activities.json", 'w') as file:
-                        json.dump(data, data.file, indent=4)
+                        json.dump(data, file, indent=4)
                     print(f"'{finishedActivity}' has been marked as finished!")
 
                 else:

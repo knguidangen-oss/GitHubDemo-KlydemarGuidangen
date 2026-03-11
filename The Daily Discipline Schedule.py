@@ -1,4 +1,5 @@
 import json
+import time
 
 def menu():
     print("\n===== MAIN MENU =====")
@@ -6,7 +7,17 @@ def menu():
 activities = []
 activitiesFinished = []
 
-print("Good day, user! This program allows you to store all the acivities that you have in a list.\nWhen you have your list, you can choose to view the list of all your pending and finished activities,\nadd and remove activities, or exit the program.")
+print()
+
+print("Good day, user! This program allows you to store all the activities that you have in a list.\n"
+      "When you have your list, you can choose to view the list of all your pending and finished activities,\n"
+      "add and remove activities, or exit the program.")
+time.sleep(1)
+
+print()
+
+print("NOTE: FOLLOW EXACT CAPITALIZATION!")
+time.sleep(1)
 
 try:
     with open("activities.json", "r") as f:
@@ -19,6 +30,7 @@ try:
 
         for activity in data:
             if activity == data["Activities"]:
+
                 activityToDO = activity
             elif activity == data["finishedActivities"]:
                 activityDone = activity
@@ -26,12 +38,15 @@ try:
         #MAIN MENU
         menu()
         print()
+        print('='*30)
         print("1 - List of Activities")
         print("2 - Finished Activities")
         print("3 - Add a New Activity")
         print("4 - Remove an Activity")
         print("5 - Mark Activity as Finished")
         print("6 - Exit")
+        print('=' * 30)
+        time.sleep(1)
 
         choice = input("Choose from the options given above (1-5): ")
         print()
@@ -40,7 +55,20 @@ try:
         if choice == "1":
             print("List of Activities:")
             if not activities:
+                print()
+                print("ⓧⓧ               ⓧⓧ")
+                print("  ⓧⓧ           ⓧⓧ")
+                print("   ⓧⓧ         ⓧⓧ")
+                print("      ⓧⓧ    ⓧⓧ")
+                print("        ⓧⓧⓧⓧ")
+                print("      ⓧⓧ    ⓧⓧ")
+                print("   ⓧⓧ         ⓧⓧ")
+                print("  ⓧⓧ           ⓧⓧ")
+                print("ⓧⓧ               ⓧⓧ")
+                time.sleep(1)
+                print()
                 print("No activities found.")
+                time.sleep(.5)
             else:
                 for activity in activities:
                     print(activity)
@@ -78,13 +106,43 @@ try:
 
             if remove in activities:
                 activities.remove(remove)
+
+                with open("Activities.json", 'w') as file:
+                    json.dump(data, file, indent=4)
+
                 print("Activity removed successfully.")
             else:
+                print()
+                print("ⓧⓧ               ⓧⓧ")
+                print("  ⓧⓧ           ⓧⓧ")
+                print("   ⓧⓧ         ⓧⓧ")
+                print("      ⓧⓧ    ⓧⓧ")
+                print("        ⓧⓧⓧⓧ")
+                print("      ⓧⓧ    ⓧⓧ")
+                print("   ⓧⓧ         ⓧⓧ")
+                print("  ⓧⓧ           ⓧⓧ")
+                print("ⓧⓧ               ⓧⓧ")
+                time.sleep(1)
+                print()
                 print("Activity could not be found.")
+                time.sleep(.5)
 
         elif choice == "5":
             if not activities:
+                print()
+                print("ⓧⓧ               ⓧⓧ")
+                print("  ⓧⓧ           ⓧⓧ")
+                print("   ⓧⓧ         ⓧⓧ")
+                print("      ⓧⓧ    ⓧⓧ")
+                print("        ⓧⓧⓧⓧ")
+                print("      ⓧⓧ    ⓧⓧ")
+                print("   ⓧⓧ         ⓧⓧ")
+                print("  ⓧⓧ           ⓧⓧ")
+                print("ⓧⓧ               ⓧⓧ")
+                time.sleep(1)
+                print()
                 print("No unfinished activities to remove.")
+                time.sleep(.5)
             else:
                 print("Unfinished activities:")
                 for activity in activities:
@@ -101,7 +159,20 @@ try:
                     print(f"'{finishedActivity}' has been marked as finished!")
 
                 else:
+                    print()
+                    print("ⓧⓧ               ⓧⓧ")
+                    print("  ⓧⓧ           ⓧⓧ")
+                    print("   ⓧⓧ         ⓧⓧ")
+                    print("      ⓧⓧ    ⓧⓧ")
+                    print("        ⓧⓧⓧⓧ")
+                    print("      ⓧⓧ    ⓧⓧ")
+                    print("   ⓧⓧ         ⓧⓧ")
+                    print("  ⓧⓧ           ⓧⓧ")
+                    print("ⓧⓧ               ⓧⓧ")
+                    time.sleep(1)
+                    print()
                     print("Invalid choice. The activity must be in the unfinished list.")
+                    time.sleep(.5)
         # End the program
         elif choice == "6":
             print("Goodbye!")

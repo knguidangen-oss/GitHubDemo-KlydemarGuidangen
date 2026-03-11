@@ -175,7 +175,7 @@ try:
                     time.sleep(.5)
         # End the program
         elif choice == "6":
-            print("Goodbye!")
+            print("Have a nice day! Goodbye!")
             break
 
         else:

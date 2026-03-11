@@ -172,7 +172,7 @@ try:
                     time.sleep(1)
                     print()
                     print("Invalid choice. The activity must be in the unfinished list.")
-                    time.sleep(.5)
+                    time.sleep(.6)
         # End the program
         elif choice == "6":
             print("Have a nice day! Goodbye!")

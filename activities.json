@@ -1,14 +1,5 @@
 {
-      "Activities" : ["ES Project",
-      "Biology notes",
-      "Chemistry assignment",
-      "Geometry worksheet" ,
-      "Algebra online quiz",
-      "Physics video project" ,
-      "ES laboratory report" ,
-      "Physics notes",
-      "Es project",
-      "English worksheet"],
+      "Activities" : [],
 
       "finishedActivities" : []
 }

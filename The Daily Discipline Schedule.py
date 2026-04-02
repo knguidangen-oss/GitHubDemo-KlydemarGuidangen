@@ -84,7 +84,7 @@ try:
 
         # Add a new activity to the list
         elif choice == "3":
-            new_activity = input("Add a new activity: ")
+            new_activity = input("Add a new activity: ").upper()
             activities.append(new_activity)
 
             with open("Activities.json", 'w') as file:
@@ -102,7 +102,7 @@ try:
                 for activity in activities:
                     print(activity)
 
-            remove = input("Choose an activity to remove: ")
+            remove = input("Choose an activity to remove: ").upper()
 
             if remove in activities:
                 activities.remove(remove)

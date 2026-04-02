@@ -16,7 +16,7 @@ time.sleep(1)
 
 print()
 
-print("NOTE: FOLLOW EXACT CAPITALIZATION!")
+print("NOTE: FOLLOW EXACT WORD!")
 time.sleep(1)
 
 try:

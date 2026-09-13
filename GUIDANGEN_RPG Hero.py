@@ -1,3 +1,4 @@
+#Blueprint
 class Hero:
     def __init__(self, name, hp, attack):
         self.name = name
@@ -13,24 +14,24 @@ class Hero:
         return self.hp > 0
 
 
+#My characters
 arthur = Hero("Arthur", 100, 15)
-lancelot = Hero("Lancelot", 100, 10)
 morgana = Hero("Morgana", 80, 20)
 
+#Arthur takes damage
+# Arthur takes 10 damage manually
 arthur.take_damage(10)
-print("Arthur HP:", arthur.hp)
-print("Morgana HP:", morgana.hp)
+
+print("--- Initial Damage Check ---")
+print("Arthur takes damage")
+print("Arthur HP:", arthur.hp)    # Health: 90
+print("Morgana HP:", morgana.hp)  # Health: 80
 print()
 
-arthur.take_damage(lancelot.attack)
-print("Arthur health after Lancelot hit:", arthur.hp)
+
+#Final Status
+print("--- Final Status ---")
+print("Arthur final health:", arthur.hp)
 print("Is Arthur alive?", arthur.is_alive())
-print()
-
-for i in range(7):
-    lancelot.take_damage(arthur.attack)
-    print("Lancelot health after attack:", lancelot.hp)
-
-print()
-print("Lancelot final health:", lancelot.hp)
-print("Is Lancelot alive?", lancelot.is_alive())
+print("Morgana final health:", morgana.hp)
+print("Is Morgana alive?", morgana.is_alive())
